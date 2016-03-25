@@ -22,8 +22,8 @@
             <section>
                 <div class="me"></div>
                 <p>Paul Heasley</p>
-                <p><i class="fa fa-twitter"></i> @pheasley</p>
-                <p><i class="fa fa-globe"></i> phdesign.com.au</p>
+                <p><i class="fa fa-twitter"></i> <a href="https://twitter.com/pheasley">@pheasley</a></p>
+                <p><i class="fa fa-globe"></i> <a href="http://phdesign.com.au">phdesign.com.au</a></p>
                 <img src="images/pageup.png" alt="PageUp Logo" class="pageup-logo">
             </section>
             <!-- Why load test? -->
@@ -34,46 +34,92 @@
                 <h3 class="quote">Here's some quote about what load testing is</h3>
                 <p>- Wikipedia</p>
             </section>
-            <!-- Our results -->
             <section>
-                <h2>Our conclusions</h2>
+                <h2>Our findings</h2>
+                <ul>
+                    <li>Login was a bottleneck</li>
+                    <li>Our ability to scale under heavy load was flawed</li>
+                </ul>
             </section>
+            <!-- Steps in a load test -->
             <section>
-                <h2>Identified a performance bottleneck with login</h2>
-                <img src="login times before and after" />
+                <h3>How to load test your application</h3>
+                <ol class="bullet align-left">
+                    <li class="bullet">Model a users behaviour</li>
+                    <li class="bullet">Simulate load</li>
+                    <li class="bullet">Interpret results</li>
+                    <li class="bullet">Take action</li>
+                </ol>
             </section>
+            <!-- 1. Model a users behaviour -->
             <section>
-                <h2>Identified problems with scaling our application in AWS</h2>
-                <img src="" />
-            </section>
-            <!-- Interpreting the results -->
-            <section>
-                <h2>Interpreting the results</h2>
-            </section>
-            <!-- Building a bot army (switch to github and walk through the code) -->
-            <section>
-                <h2>Building a bot army</h2>
-            </section>
-            <section>
-                <h2>Demo<h2>
-            </section>
-            <!-- Modelling a users behaviour -->
-            <section>
-                <h2>Modelling a users behaviour</h2>
-            </section>
-            <!-- Wrap up --> 
-            <section>
-                <h2 class="bullet">Alternative tools</h2>
+                <h2 class="bullet">Identify a toolset</h2>
                 <div>
                     <p class="bullet">BlazeMeter</p>
                     <p class="bullet">Visual Studio Load Testing</p>
-                    <p class="bullet"><a href="https://github.com/oliverlloyd/jmeter-ec2">https://github.com/oliverlloyd/jmeter-ec2</a></p>
+                    <p class="bullet"><a href="https://github.com/oliverlloyd/jmeter-ec2">JMeter and EC2 (fully automated)</a></p>
+                    <p class="bullet"><a href="https://github.com/PageUpPeopleOrg/aws-load-test">JMeter and EC2 (simple)</a></p>
                 </div>
             </section>
+            <!-- Demo browsing a site with 'Preserve log' on -->
+            <section>
+                <h3>1. Modelling a users behaviour in JMeter</h3>
+                <p>(Use Chrome Dev Tools)</p>
+            </section>
+            <!-- Demo a simple JMeter script, highlight num of users and loops -->
+            <section>
+                <h3>Setup JMeter test</h3>
+            </section>
+            <!-- 2. Simulate load -->
+            <section>
+                <h3>2. Simulate load using AWS</h3>
+            </section>
+            <!-- My bot army diagram -->
+            <section>
+            </section>
+            <!-- Walkthrough of aws-load-test -->
+            <section class="align-left">
+                <p><a href="https://github.com/PageUpPeopleOrg/aws-load-test">github.com/PageUpPeopleOrg/aws-load-test</a></p>
+                <pre class="text"><code>
+.
+├── autoscale.sh
+├── kill.sh
+├── loadtest.properties
+├── loadtest.sh
+├── server.sh
+├── user.properties
+└── Vagrantfile
+</code></pre>
+            </section>
+            <!-- Switch to Github, discuss code -->
+            <!-- Demo running the load test -->
+            <!-- 3. Interpret the results -->
+            <section>
+                <h3>3. Interpret the results</h3>
+            </section>
+            <section>
+                <h3>Loadosophia.org</h3>
+                <img src="" alt="" />
+            </section>
+            <section>
+                <h3>JMeter Graphs</h3>
+                <img src="" alt="" />
+            </section>
+            <!-- 4. Take action -->
+            <section>
+                <h3>4. Take action</h3>
+            </section>
+            <section>
+                <h3>Our login bottleneck</h3>
+            </section>
+            <section>
+                <h3>Our scaling problem</h3>
+            </section>
+            <!-- Wrap up --> 
             <section>
                 <h2>Thanks!</h2>
-                <p class="footnote left"><i class="fa fa-globe"></i> http://phdesign.com.au/presentation-load-testing</p>
-                <p class="footnote right"><i class="fa fa-twitter"></i> @pheasley</p>
+                <p class="footnote left"><i class="fa fa-globe"></i> <a href="http://phdesign.com.au/presentation-load-testing">http://phdesign.com.au/presentation-load-testing</a></p>
+                <p class="footnote right"><i class="fa fa-twitter"></i> <a href="https://twitter.com/pheasley">@pheasley</a></p>
             </section>
         </article>
 
