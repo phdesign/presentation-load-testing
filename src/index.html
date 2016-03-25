@@ -31,7 +31,7 @@
                 <h2>Why load test your application?</h2>
             </section>
             <section>
-                <h3 class="quote">Here's some quote about what load testing is</h3>
+                <h3 class="quote">Load testing is performed to determine a system's behavior under both normal and anticipated peak load conditions. It helps to identify the maximum operating capacity of an application as well as any bottlenecks and determine which element is causing degradation.</h3>
                 <p>- Wikipedia</p>
             </section>
             <section>
@@ -42,9 +42,9 @@
                 </ul>
             </section>
             <!-- Steps in a load test -->
-            <section>
+            <section class="align-left">
                 <h3>How to load test your application</h3>
-                <ol class="bullet align-left">
+                <ol class="bullet">
                     <li class="bullet">Model a users behaviour</li>
                     <li class="bullet">Simulate load</li>
                     <li class="bullet">Interpret results</li>
@@ -69,20 +69,20 @@
             <!-- Demo a simple JMeter script, highlight num of users and loops -->
             <section>
                 <h3>Setup JMeter test</h3>
+                <img src="images/jmeter.png" alt="JMeter screenshot">
             </section>
             <!-- 2. Simulate load -->
             <section>
                 <h3>2. Simulate load using AWS</h3>
             </section>
             <!-- My bot army diagram -->
-            <section>
+            <section data-bespoke-state="dark" data-bespoke-backdrop="my-bot-army">
             </section>
             <!-- Walkthrough of aws-load-test -->
             <section class="align-left">
                 <p><a href="https://github.com/PageUpPeopleOrg/aws-load-test">github.com/PageUpPeopleOrg/aws-load-test</a></p>
                 <pre class="text"><code>
 .
-├── autoscale.sh
 ├── kill.sh
 ├── loadtest.properties
 ├── loadtest.sh
