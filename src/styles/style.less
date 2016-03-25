@@ -1,6 +1,8 @@
 // variables
 
 @font_size_base: 40px;
+@font_family_sans_serif: "Open Sans", helvetica, arial, sans-serif;
+@font_family_serif: Georgia, "Times New Roman", serif;
 @primary: #00F3A5;
 
 @slide_width: 1200px;
@@ -226,7 +228,7 @@ pre {
 
 body {
   background: #f0f0f0;
-  font-family: open sans, helvetica, arial, sans-serif;
+  font-family: @font_family_sans_serif;
   font-weight: 300;
   font-size: @font_size_base;
   color: #333;
@@ -277,7 +279,27 @@ a {
   text-decoration: none;
 }
 .strikethrough {
-    text-decoration: line-through;
+  text-decoration: line-through;
+}
+.quote {
+  font-style: italic;
+  .quote-marks {
+    font-size: (@font_size_base * 3);
+    font-family: @font_family_serif;
+    color: #999;
+    line-height: 0.1em;
+    vertical-align: -0.4em;
+  }
+  &:before {
+    content: "\00201C";
+    margin-right: 0.25em;
+    .quote-marks;
+  }
+  &:after {
+    content: "\00201D";
+    margin-left: 0.25em;
+    .quote-marks;
+  }
 }
 .small-gap {
   margin-bottom: (@font_size_base * 0.4);
