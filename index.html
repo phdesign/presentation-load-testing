@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Finding performance bottlenecks with JMeter</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="styles/style.css"/>
+    </head>
+    <body>
+        <article>
+            <!-- Intro -->
+            <section>
+                <h1>Finding performance bottlenecks with JMeter</h1>
+            </section>
+            <section>
+                <div class="me"></div>
+                <p>Paul Heasley</p>
+                <p><i class="fa fa-twitter"></i> <a href="https://twitter.com/pheasley">@pheasley</a></p>
+                <p><i class="fa fa-globe"></i> <a href="http://phdesign.com.au">phdesign.com.au</a></p>
+                <img src="images/pageup.png" alt="PageUp Logo" class="pageup-logo">
+            </section>
+            <!-- Why load test? -->
+            <section>
+                <h2>Why load test your application?</h2>
+            </section>
+            <section>
+                <h3 class="quote">Load testing is performed to determine a system's behavior under both normal and anticipated peak load conditions. It helps to identify the maximum operating capacity of an application as well as any bottlenecks and determine which element is causing degradation.</h3>
+                <p>- Wikipedia</p>
+            </section>
+            <section>
+                <h2>Our findings</h2>
+                <ul>
+                    <li>Login was a bottleneck</li>
+                    <li>Our ability to scale under heavy load was flawed</li>
+                </ul>
+            </section>
+            <!-- Steps in a load test -->
+            <section class="align-left">
+                <h3>How to load test your application</h3>
+                <ol class="bullet">
+                    <li class="bullet">Model a users behaviour</li>
+                    <li class="bullet">Simulate load</li>
+                    <li class="bullet">Interpret results</li>
+                    <li class="bullet">Take action</li>
+                </ol>
+            </section>
+            <!-- 1. Model a users behaviour -->
+            <section>
+                <h2 class="bullet">Identify a toolset</h2>
+                <div>
+                    <p class="bullet">BlazeMeter</p>
+                    <p class="bullet">Visual Studio Load Testing</p>
+                    <p class="bullet"><a href="https://github.com/oliverlloyd/jmeter-ec2">JMeter and EC2 (fully automated)</a></p>
+                    <p class="bullet"><a href="https://github.com/PageUpPeopleOrg/aws-load-test">JMeter and EC2 (simple)</a></p>
+                </div>
+            </section>
+            <!-- Demo browsing a site with 'Preserve log' on -->
+            <section>
+                <h2>1. Modelling a users behaviour</h2>
+                <p>(Use Chrome Dev Tools)</p>
+            </section>
+            <!-- Demo a simple JMeter script, highlight num of users and loops -->
+            <section>
+                <h3>Setup JMeter test</h3>
+                <img src="images/jmeter.png" alt="JMeter screenshot">
+            </section>
+            <!-- 2. Simulate load -->
+            <section>
+                <h2>2. Simulate load using AWS</h2>
+            </section>
+            <!-- My bot army diagram -->
+            <section data-bespoke-state="dark" data-bespoke-backdrop="my-bot-army">
+            </section>
+            <!-- Walkthrough of aws-load-test -->
+            <section class="align-left">
+                <p><a href="https://github.com/PageUpPeopleOrg/aws-load-test">github.com/PageUpPeopleOrg/aws-load-test</a></p>
+                <pre class="language-javascript"><code>
+.
+├── kill.sh // run this to shutdown the test on all servers
+├── loadtest.properties // the configuration file, the only file you need to edit
+├── loadtest.sh // the main script, run this from your local PC to kick off the test
+├── server.sh // The remote server script, installs JMeter and runs the test
+├── user.properties // JMeter configuration that's copied to all remotes
+└── Vagrantfile // A convenient vagrant setup to run the script on windows
+</code></pre>
+            </section>
+            <!-- Switch to Github, discuss code -->
+            <!-- Demo running the load test -->
+            <!-- 3. Interpret the results -->
+            <section>
+                <h2>3. Interpret the results</h2>
+            </section>
+            <section>
+                <h3>Loadosophia.org</h3>
+                <img src="images/loadosophia.png" alt="Loadosophia screenshot">
+            </section>
+            <section>
+                <h3>JMeter Graphs</h3>
+                <img src="images/jmeter-graphs.png" alt="A typical JMeter graph">
+            </section>
+            <!-- 4. Take action -->
+            <section>
+                <h2>4. Take action</h2>
+            </section>
+            <section>
+                <h3>Our login bottleneck</h3>
+                <div class="row-2-columns">
+                    <div class="col1">
+                        <p>Before</p>
+                        <img src="images/login-before.png" alt="Initial load test results showing poor login page performance">
+                    </div>
+                    <div class="col2">
+                        <p>After</p>
+                        <img src="images/login-after.png" alt="Load test results after applying fix">
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h3>Our scaling problem</h3>
+                <div class="row-2-columns">
+                    <div class="col1">
+                        <p>Before</p>
+                        <img src="images/scaling-before.png" alt="Initial load test results showing poor login page performance">
+                    </div>
+                    <div class="col2">
+                        <p>After</p>
+                        <img src="images/scaling-after.png" alt="Load test results after applying fix">
+                    </div>
+                </div>
+            </section>
+            <!-- Wrap up --> 
+            <section>
+                <h2>Thanks!</h2>
+                <p class="footnote left"><i class="fa fa-globe"></i> <a href="http://phdesign.com.au/presentation-load-testing">http://phdesign.com.au/presentation-load-testing</a></p>
+                <p class="footnote right"><i class="fa fa-twitter"></i> <a href="https://twitter.com/pheasley">@pheasley</a></p>
+            </section>
+        </article>
+
+        <script src="scripts/scripts.js"></script>
+    </body>
+</html>
