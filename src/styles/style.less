@@ -8,6 +8,7 @@
 @font_color: @color_dark_grey;
 @font_family_sans_serif: "Open Sans", helvetica, arial, sans-serif;
 @font_family_serif: Georgia, "Times New Roman", serif;
+@link_color: darkblue;
 
 @slide_width: 1200px;
 @slide_height: 900px;
@@ -150,8 +151,11 @@ article {
   &.iphone-vs-50cal {
     background-image: url('../images/iphone-vs-50cal.gif');
   } 
-  &.iphone-bend {
-    background-image: url('../images/iphone-bend.png');
+  &.gym-weights {
+    background-image: url('../images/gym-weights.jpg');
+  } 
+  &.take-action {
+    background-image: url('../images/take-action.jpg');
   } 
 }
 .bespoke-backdrop-inactive {
@@ -213,7 +217,9 @@ h3 {
   font-weight: 300;
   margin-bottom: (@font_size_base * 0.4);
 }
-
+h3 + ul, h3 + ol {
+  margin-top: @font_size_base;
+}
 hr {
   visibility: hidden;
   height: 20px;
@@ -235,7 +241,7 @@ small {
   font-size: 50%;
 }
 a {
-  color: @font_color;
+  color: @link_color;
   text-decoration: none;
 }
 .strikethrough {

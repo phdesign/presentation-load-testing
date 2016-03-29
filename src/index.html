@@ -27,13 +27,27 @@
                 <img src="images/pageup.png" alt="PageUp Logo" class="pageup-logo">
             </section>
             <!-- Why load test? -->
-            <section data-bespoke-state="white" data-bespoke-backdrop="iphone-bend">
+            <section>
                 <h2>Why load test your application?</h2>
+                <img src="images/iphone-bend.png" alt="Stess testing an iPhone">
             </section>
             <section>
                 <h3 class="quote">Load testing is performed to determine a system's behavior under both normal and anticipated peak load conditions. It helps to identify the maximum operating capacity of an application as well as any bottlenecks and determine which element is causing degradation.</h3>
                 <p>- Wikipedia</p>
             </section>
+            <section>
+                <h3>What load testing doesn't cover</h3>
+                <ul>
+                    <li>Browser rending times</li>
+                    <li>Fetching static resources</li>
+                    <li>Real environment behaviour</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Trying to break our system was hard</h3>
+                <h3>Decide what response times are acceptable for you</h3>
+            </section>
+            <!-- Average and worst login times -->
             <section>
                 <h2>Our findings</h2>
                 <ul>
@@ -53,27 +67,43 @@
             </section>
             <!-- 1. Model a users behaviour -->
             <section>
-                <h2 class="bullet">Identify a toolset</h2>
-                <div>
-                    <p class="bullet">BlazeMeter</p>
-                    <p class="bullet">Visual Studio Load Testing</p>
-                    <p class="bullet"><a href="https://github.com/oliverlloyd/jmeter-ec2">JMeter and EC2 (fully automated)</a></p>
-                    <p class="bullet"><a href="https://github.com/PageUpPeopleOrg/aws-load-test">JMeter and EC2 (simple)</a></p>
-                </div>
+                <h2>1. Modelling a users behaviour</h2>
+                <img src="images/model-user.jpg">
+            </section>
+            <section>
+                <h3>Decide on a test tool</h3>
+                <ul>
+                    <li>JMeter</li>
+                    <li>Visual Studio Load Testing</li>
+                </ul>
             </section>
             <!-- Demo browsing a site with 'Preserve log' on -->
-            <section>
-                <h2>1. Modelling a users behaviour</h2>
-                <p>(Use Chrome Dev Tools)</p>
-            </section>
+            <!-- Todo show JMeter first, then using Chrome dev tools -->
             <!-- Demo a simple JMeter script, highlight num of users and loops -->
+            <!-- TODO: Show post processors, timers -->
             <section>
                 <h3>Setup JMeter test</h3>
-                <img src="images/jmeter.png" alt="JMeter screenshot">
+                <img src="images/jmeter-request.png" alt="JMeter screenshot">
             </section>
-            <!-- 2. Simulate load -->
             <section>
-                <h2>2. Simulate load using AWS</h2>
+                <h3>Model the user</h3>
+                <img src="images/jmeter-recorder.png" alt="JMeter http recorder screenshot" style="height: 40%">
+                <p></p>
+                <img src="images/chrome-preserve-log.png" alt="JMeter http recorder screenshot" style="height: 25%">
+            </section>
+            <!-- TODO: show script recorder and chrome dev tools -->
+            <!-- 2. Simulate load -->
+            <section data-bespoke-state="dark" data-bespoke-backdrop="gym-weights">
+                <h2>2. Simulate load</h2>
+            </section>
+            <section>
+                <h3>Applying load</h3>
+                <ul>
+                    <li>Your local PC (&lt; 500 users)</li>
+                    <li><a href="https://www.blazemeter.com/">BlazeMeter</a></li>
+                    <li><a href="https://github.com/oliverlloyd/jmeter-ec2">JMeter and EC2 (fully automated)</a></li>
+                    <li><a href="https://github.com/PageUpPeopleOrg/aws-load-test">JMeter and EC2 (simple)</a></li>
+                </ul>
             </section>
             <!-- My bot army diagram -->
             <section data-bespoke-state="dark" data-bespoke-backdrop="my-bot-army">
@@ -91,11 +121,53 @@
 └── Vagrantfile // A convenient vagrant setup to run the script on windows
 </code></pre>
             </section>
-            <!-- Switch to Github, discuss code -->
-            <!-- Demo running the load test -->
+            <section>
+                <h3>loadtest.properties</h3>
+                <pre class="language-bash"><code>#!/bin/bash
+
+JMETER_VERSION=2.13
+# The following properties should be set:
+# jmeter.save.saveservice.output_format=csv
+# jmeter.save.saveservice.thread_counts=true
+JMETER_PROPERTIES=user.properties
+JMETER_TEST=testscript.jmx
+
+# The number of virtual users (VU) or threads to run. PER SERVER (e.g. 3 servers x 300 users = 900 total)
+TEST_USERS=50
+# The ramp up time in seconds
+TEST_RAMP_UP=60
+# Test duration in seconds
+TEST_DURATION=300
+# This is not currently used - to run a Constant Throughput test, enable the Constant Throughput Timer in the test (and potentially disable all Guassian Timers)
+TEST_HITS_PER_MIN=360
+
+# This must be an absolute path to your ssh private key
+PRIVATE_KEY=$HOME/.ssh/private.pem
+USER=ec2-user
+
+# Comma seperated list of remote server IPs to run the test from
+SERVERS=xxx.xxx.xxx.xxx,xxx.xxx.xxx.xxx
+# A folder to place jmeter and this project under on the server
+SERVER_DIR=loadtest
+# The name of the logs folder (under the SERVER_DIR) to place logs
+SERVER_LOG_DIR=logs
+# The name of the log file on the server (under ~/SERVER_DIR/SERVER_LOG_DIR/)
+SERVER_LOG_FILE=server.jtl
+
+# The name of the logs folder for the orchestrating machine (e.g. this PC)
+LOCAL_LOG_DIR=logs
+# The name of the aggregated log file that will be send to loadosophia
+LOCAL_LOG_FILE=results.jtl
+
+# Your loadosophia.org access key (get it from the settings page and save to file)
+LOADOSOPHIA_KEY=loadosophia.key
+LOADOSOPHIA_PROJECT=MyProject
+</code></pre>
+            </section>
             <!-- 3. Interpret the results -->
             <section>
                 <h2>3. Interpret the results</h2>
+                <img src="images/mcdonalds-graph.jpg">
             </section>
             <section>
                 <h3>Loadosophia.org</h3>
@@ -103,10 +175,11 @@
             </section>
             <section>
                 <h3>JMeter Graphs</h3>
+                <p>Checkout <a href="http://jmeter-plugins.org/">jmeter-plugins.org</a></p>
                 <img src="images/jmeter-graphs.png" alt="A typical JMeter graph">
             </section>
             <!-- 4. Take action -->
-            <section>
+            <section data-bespoke-state="dark" data-bespoke-backdrop="take-action cover">
                 <h2>4. Take action</h2>
             </section>
             <section>
